@@ -40,9 +40,10 @@ const HomePage = () => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    padding: "10vh",
+                    // padding: "10vh",
                 }}
-                title={<h1 style={{ fontSize: "10vh", color: "#005cbf" }}>Corona management system for HMO</h1>}
+                title={<h1 style={{ fontSize: "10vh", color: "#005cbf" }}>Corona data management system and vaccine research</h1>}
+                // title={<h1 style={{ fontSize: "10vh", color: "#005cbf" }}>Corona management system for HMO</h1>}
             />
         </div>
     );

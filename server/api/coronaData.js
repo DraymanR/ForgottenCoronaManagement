@@ -22,7 +22,7 @@ router.get('/count-active-patients-last-month', async (req, res) => {
 router.get('/vaccinated-members', async (req, res) => {
     try {
         const count = await coronaDataRoute.vaccinatedMembers();
-        res.status(200).send(count.toString());
+        res.status(200).send(count);
     } catch (error) {
         res.status(500).send({ error: 'Internal server error' });
     }

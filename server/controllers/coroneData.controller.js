@@ -9,7 +9,7 @@ module.exports = class CoronaDataController {
     async getAll() {
         let coronaDatas = await CoronaDataModel.find({}, { _id: 0 });
         // console.log(coronaDatas.vaccinationDates);
-        
+
         return coronaDatas;
     }
 
@@ -72,6 +72,8 @@ module.exports = class CoronaDataController {
                 countsByDay[dateKey] = (countsByDay[dateKey] || 0) + 1;
                 return countsByDay;
             }, {});
+            console.log("????????");
+
             console.log(result);
             return result;
         } catch (error) {
@@ -80,24 +82,25 @@ module.exports = class CoronaDataController {
     }
 
     async vaccinatedMembers() {
+        console.log("vaccinatedMembers()");
         try {
-            const allCoronaData = await this.getAll();
-            const filteredData = allCoronaData.filter(coronaData => {
-                return coronaData.vaccinationDates
-            })
-            console.log("!!!!!!!!!!!!!!");
-            
-            console.log(filteredData);
-            
-            // let nonVaccinatedMembersCount = 0;
-            allCoronaData.forEach(coronaData => {
-                if (!coronaData.vaccinationDates || coronaData.vaccinationDates.length === 0) {
-                    nonVaccinatedMembersCount++;
-                }
-            });
-            return nonVaccinatedMembersCount;
+            const data = await this.getAll();
+            const dateCounts = data.reduce((counts, item) => {
+                item.vaccinationDates.forEach(vaccination => {
+                    const date = vaccination.date.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
+                    counts[date] = (counts[date] || 0) + 1; // Increment the count for each date
+                });
+                return counts;
+            }, {});
 
-        } catch (error) {
+            // // Step 2: Convert to array format (optional, for readability)
+            // const result = Object.entries(dateCounts).map(([date, count]) => ({ date, count }));
+            // console.log(dateCounts, "dddddddddd");
+
+            // console.log(result, "rrrrrr");
+            return dateCounts
+        }
+        catch (error) {
             return { error: 'Error counting vaccinated members: ' + error.message };
         }
     }

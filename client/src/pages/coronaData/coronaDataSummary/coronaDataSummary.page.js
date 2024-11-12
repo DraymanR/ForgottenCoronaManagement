@@ -4,6 +4,7 @@ import React from 'react';
 import { useState } from "react";
 import MyLineChart from "./lineChart";
 import coronaDataService from "../../../services/coronaData.service";
+import VaccinationChart from "./VaccinationChart";
 
 const CoronaDataSummaryPage = () => {
 
@@ -12,7 +13,6 @@ const CoronaDataSummaryPage = () => {
     const [showChart, setShowChart] = useState(false);
     const [showCountNotVaccinatedMembers, setShowCountNotVaccinatedMembers] = useState(false);
     const [activePatients, setActivePatients] = useState([])
-    const [vaccinatedPatients, setvaccinatedPatients] = useState([])
     const [countNotVaccinatedMembers, setCountNotVaccinatedMembers] = useState()
 
 
@@ -48,15 +48,15 @@ const CoronaDataSummaryPage = () => {
 
     const numNotBeenVaccinated = async () => {
         try {
-            const rawData = await coronaDataService.getCountActivePatientsLastMonth();
-            const data = rawData.map(date => {
-                const dateString = date.toISOString().split('T')[0];
-                return {
-                    date: dateString,
-                    value: rawData[dateString] || 0
-                };
-            });
-            setvaccinatedPatients(data)
+            // const rawData = await coronaDataService.getCountActivePatientsLastMonth();
+            // const data = rawData.map(date => {
+            //     const dateString = date.toISOString().split('T')[0];
+            //     return {
+            //         date: dateString,
+            //         value: rawData[dateString] || 0
+            //     };
+            // });
+            // setvaccinatedPatients(data)
             setShowCountNotVaccinatedMembers(!showCountNotVaccinatedMembers)
         } catch (error) {
             console.error('Error fetching corona data by member ID:', error);
@@ -88,8 +88,8 @@ const CoronaDataSummaryPage = () => {
             <GenericButton variant="secondary" onClick={numNotBeenVaccinated} label="get the amount of POS members how have not been vaccinated ay all">
                 {showCountNotVaccinatedMembers ? 'Hide NumNotBeenVaccinated' : 'Show NumNotBeenVaccinated'}
             </GenericButton>
-            <br></br>
-            {showCountNotVaccinatedMembers && <MyLineChart data={vaccinatedPatients}/>}
+            {/* <br></br> */}
+            {showCountNotVaccinatedMembers && <VaccinationChart />}
             <ErrorModal show={showModal} message={error} onClose={() => setShowModal(false)} />
         </div>
     );
