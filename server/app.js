@@ -1,11 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const logger = require('../middlewares/logger');
-const errorMW = require('../middlewares/errors');
-const member = require("./member");
-const coronaData = require("./coronaData")
-const auth = require("./auth");
+const logger = require('./middlewares/logger');
+// const logger = require('/middlewares/logger');
+const errorMW = require('./middlewares/errors');
+const member = require("./api/member");
+const coronaData = require("./api/coronaData")
+const auth = require("./api/auth");
 const app = express();
 app.use(cors({
     origin: '*',

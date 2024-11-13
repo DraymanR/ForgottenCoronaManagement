@@ -13,7 +13,7 @@ const CoronaDataSummaryPage = () => {
     const [showChart, setShowChart] = useState(false);
     const [showCountNotVaccinatedMembers, setShowCountNotVaccinatedMembers] = useState(false);
     const [activePatients, setActivePatients] = useState([])
-    const [countNotVaccinatedMembers, setCountNotVaccinatedMembers] = useState()
+    // const [countNotVaccinatedMembers, setCountNotVaccinatedMembers] = useState()
 
 
     const generateLast30DaysArray = () => {
