@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { connect } = require("../models/index");
+const { connect } = require("../index");
 const { MemberModel } = require("../models/member.model")
 const multer = require('multer');
 
