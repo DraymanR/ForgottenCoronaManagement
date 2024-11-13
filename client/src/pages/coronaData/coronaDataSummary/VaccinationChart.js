@@ -3,7 +3,7 @@ import MyLineChart from './lineChart';
 import coronaDataService from '../../../services/coronaData.service';
 
 const VaccinationChart = () => {
-  const [startDate, setStartDate] = useState(new Date('2021-01-01'));
+  const [startDate, setStartDate] = useState(new Date('2024-09-01'));
   const [endDate, setEndDate] = useState(new Date());
   const [vaccinatedPatients, setvaccinatedPatients] = useState([])
 

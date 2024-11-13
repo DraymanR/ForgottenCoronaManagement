@@ -85,7 +85,7 @@ const CoronaDataSummaryPage = () => {
             {/* <GenericButton variant="secondary" onClick={numNotBeenVaccinated} label="get the amount of POS members how have not been vaccinated ay all">
                 {showCountNotVaccinatedMembers ? 'Hide NumNotBeenVaccinated' : 'Show NumNotBeenVaccinated'}
             </GenericButton> */}
-            <GenericButton variant="secondary" onClick={numNotBeenVaccinated} label="get the amount of POS members how have not been vaccinated ay all">
+            <GenericButton variant="secondary" onClick={numNotBeenVaccinated} label="Get amount of vaccinated members by dates">
                 {showCountNotVaccinatedMembers ? 'Hide NumNotBeenVaccinated' : 'Show NumNotBeenVaccinated'}
             </GenericButton>
             {/* <br></br> */}
