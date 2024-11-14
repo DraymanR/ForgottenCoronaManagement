@@ -1,4 +1,4 @@
-const { connect } = require("../index");
+const { connect } = require("../models/index");
 const { CoronaDataModel } = require("../models/coronaData.model")
 
 module.exports = class CoronaDataController {
