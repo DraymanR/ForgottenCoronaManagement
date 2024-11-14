@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+const serverless = require('serverless-http');
 const logger = require('./middlewares/logger');
 // const logger = require('/middlewares/logger');
 const errorMW = require('./middlewares/errors');
@@ -19,10 +20,11 @@ app.use(express.json());
 app.use('/auth', auth);
 app.use('/member', member);
 app.use('/corona-data',coronaData);
-const port = process.env.PORT || 3001;
-app.listen(port, () => {
-    console.log(`Server is up and running on port ${port}`);
-});
+// const port = process.env.PORT || 3001;
+// app.listen(port, () => {
+//     console.log(`Server is up and running on port ${port}`);
+// });
 // app.listen(3001, () => {
 //     console.log('server is up and running')
 // });
+module.exports.handler = serverless(app); // השתמש ב-handler
