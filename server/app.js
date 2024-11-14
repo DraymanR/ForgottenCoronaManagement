@@ -19,7 +19,10 @@ app.use(express.json());
 app.use('/auth', auth);
 app.use('/member', member);
 app.use('/corona-data',coronaData);
-
-app.listen(3001, () => {
-    console.log('server is up and running')
+const port = process.env.PORT || 3001;
+app.listen(port, () => {
+    console.log(`Server is up and running on port ${port}`);
 });
+// app.listen(3001, () => {
+//     console.log('server is up and running')
+// });
